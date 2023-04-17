@@ -1,12 +1,13 @@
-body{
-    
-}
+
 #calculator, .display{
     display:flex;
     flex-direction: column;
 }
 #cleaning{
     display:flex;
+    border: 1px solid black;
+    width:500px;
+    justify-content:space-evenly;
 }
 #cleaning > div{
     height:25px;
@@ -15,8 +16,7 @@ body{
 }
 
 .numbox{
-    
-    height: 75px;
+    height:75px;
     width:75px;
     border:1px solid black;
     border-radius: 10px;
@@ -31,12 +31,25 @@ body{
     width:300px;
     border: 1px solid black;;
 }
-#buttons{
+#numbers{
     display:flex;
     flex-wrap: wrap-reverse;
     width:250px;
     border: 1px solid black;
 }
-#dgzero{
-width: 150px;;
+#buttons{
+    display:flex;
+}
+#operations{
+    width:155px;
+    display:flex;
+    flex-wrap: wrap;
+    border:1px solid black;
+    align-content: flex-end;
+    
+    
+ 
+}
+#dgzero, #dgequal{
+width: 150px;
 }
