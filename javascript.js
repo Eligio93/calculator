@@ -1,3 +1,5 @@
+let operator="";
+
 function add(num1,num2){
     return num1+num2;
 
@@ -22,6 +24,12 @@ function operate(num1,num2,operator){
     }else if(operator=="/"){
         return num1/num2;
     }
-    
-    
 }
+
+const operation=document.querySelectorAll(".operator").forEach(function(e){
+    e.addEventListener("click",function(){
+        operator=e.textContent;
+        
+    })
+});
+
