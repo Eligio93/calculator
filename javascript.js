@@ -86,4 +86,14 @@ const equal= document.getElementById("dgequal").addEventListener("click",functio
         memory.textContent="";
     }
 })
+//button clear implemented
+const clear= document.getElementById("dgclear").addEventListener("click",function(){
+    operator="";
+    temp=0;
+    num1=0;
+    num2=0;
+    cont=0;
+    display.textContent=temp;
+    memory.textContent="";
+})
 
