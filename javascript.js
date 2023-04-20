@@ -2,7 +2,6 @@ let operator = "";
 let temp = 0;
 let num1 = 0;
 let num2 = 0;
-let array = [];
 let cont = 0;
 let display = document.getElementById("calc");
 let memory = document.getElementById("memory");
@@ -41,10 +40,8 @@ const operation = document.querySelectorAll(".operator").forEach(function (e) {
         //execute the operation without pressing equals button 
         //first of all check if we can already do the operation
         if (display.textContent !== "" && memory.textContent !== "") {
-            num1 = parseInt((memory.textContent).slice(0, -1));
-            console.log(num1);
-            num2 = parseInt((display.textContent));
-            console.log(num2);
+            num1 = parseFloat((memory.textContent).slice(0, -1));
+            num2 = parseFloat((display.textContent));
             temp = operate(num1, num2, operator);
             operator = e.textContent
             memory.textContent = temp + operator;
@@ -64,31 +61,39 @@ const operation = document.querySelectorAll(".operator").forEach(function (e) {
 // here just get the numbers we digit and put them in the temp variable
 const num = document.querySelectorAll(".number").forEach(function (e) {
     e.addEventListener("click", function () {
+        //this if check if before button "=" is been pressed
+        //if yes means that the operation the user did before is complete
+        //so if he start to type number again it starts a new calculation
+        if (cont == 1) {
+            cont = 0;
+            display.textContent = "";
+        }
+
+
         if (display.textContent == 0) {
             display.textContent = "";
         }
         display.textContent += e.textContent;
-        temp = parseInt(display.textContent);
-        console.log(temp);
-
+        temp = parseFloat(display.textContent);
     });
 });
 
 
 //button equal implemented
 const equal = document.getElementById("dgequal").addEventListener("click", function () {
+    cont = 1;
     if (display.textContent == "") {
         display.textContent = (memory.textContent).slice(0, -1);
         memory.textContent = "";
-        temp = parseInt(display.textContent);
+        temp = parseFloat(display.textContent);
         operator = "";
     } else if (memory.textContent !== "") {
         operator = (memory.textContent).slice(-1);
-        num1 = parseInt((memory.textContent).slice(0, -1));
-        num2 = parseInt(display.textContent);
-        temp= operate(num1, num2, operator);
-        display.textContent=temp;
-        
+        num1 = parseFloat((memory.textContent).slice(0, -1));
+        num2 = parseFloat(display.textContent);
+        temp = operate(num1, num2, operator);
+        display.textContent = temp;
+
         memory.textContent = "";
     }
 })
@@ -108,10 +113,20 @@ const clear = document.getElementById("dgclear").addEventListener("click", funct
 const cancel = document.getElementById("dgdel").addEventListener("click", function () {
     if ((display.textContent).length == 1) {
         display.textContent = 0;
-        temp = parseInt(display.textContent);
+        temp = parseFloat(display.textContent);
     } else {
         display.textContent = (display.textContent).slice(0, -1);
-        temp = parseInt(display.textContent);
+        temp = parseFloat(display.textContent);
     }
+})
+//implement button dot
+const dot = document.getElementById("dgdot").addEventListener("click", function (e) {
+    if ((display.textContent).includes(".")) {
+        e.preventDefault();
+    } else {
+
+        display.textContent += ".";
+    }
+
 })
 
