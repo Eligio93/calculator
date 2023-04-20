@@ -102,8 +102,10 @@ const clear= document.getElementById("dgclear").addEventListener("click",functio
 const cancel=document.getElementById("dgdel").addEventListener("click",function(){    
         if((display.textContent).length==1){
             display.textContent=0;
+            temp=parseInt(display.textContent);
         }else{
            display.textContent= (display.textContent).slice(0,-1);
+           temp=parseInt(display.textContent);
         }
 })
 
