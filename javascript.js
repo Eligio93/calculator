@@ -67,20 +67,19 @@ const num = document.querySelectorAll(".number").forEach(function (e) {
         //this if check if before button "=" is been pressed
         //if yes means that the operation the user did before is complete
         //so if he start to type number again it starts a new calculation
+    
         if (cont == 1) {
             cont = 0;
             display.textContent = "";
         }
-
-
-        if (display.textContent == 0) {
+        console.log(display.textContent);
+        if (display.textContent === 0) {
             display.textContent = "";
         }
-        if((display.textContent).length==18){
-            e.preventDefault();
-        }
+   
         display.textContent += e.textContent;
         temp = parseFloat(display.textContent);
+   
     });
 });
 
@@ -137,7 +136,7 @@ const dot = document.getElementById("dgdot").addEventListener("click", function 
 })
 //implement keyboard support
 const numKey=document.addEventListener("keydown", function(e){
-    console.log(e.key);
+ 
     if((e.keyCode)>= 48 && (e.keyCode)<=57 || (e.keyCode)>= 96 && (e.keyCode)<=105){
         if (cont == 1) {
             cont = 0;
@@ -145,14 +144,12 @@ const numKey=document.addEventListener("keydown", function(e){
         }
 
 
-        if (display.textContent == 0) {
+        if (display.textContent === 0) {
             display.textContent = "";
         }
       
         display.textContent += e.key;
-        if((display.textContent).length==18){
-            e.preventDefault();
-        }
+       
         temp = parseFloat(display.textContent);
         //Backspace keyboard implementation
     }else if((e.key)=="Backspace"){ 
@@ -197,7 +194,7 @@ const numKey=document.addEventListener("keydown", function(e){
 
         memory.textContent = "";
     }
-    //implement dot part
+    //implement dot part keyboard
     }else if(e.key = "."){
         if ((display.textContent).includes(".")) {
             e.preventDefault();
