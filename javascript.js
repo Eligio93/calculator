@@ -73,7 +73,7 @@ const num = document.querySelectorAll(".number").forEach(function (e) {
             display.textContent = "";
         }
         console.log(display.textContent);
-        if (display.textContent === 0) {
+        if (display.textContent == "0") {
             display.textContent = "";
         }
    
@@ -144,7 +144,7 @@ const numKey=document.addEventListener("keydown", function(e){
         }
 
 
-        if (display.textContent === 0) {
+        if (display.textContent == "0") {
             display.textContent = "";
         }
       
