@@ -180,7 +180,24 @@ const numKey=document.addEventListener("keydown", function(e){
             operator = e.key;
             memory.textContent = temp + operator;
         }
+        //Iplement the equal from keyboard
+    }else if(e.key="Enter" || e.key=="="){
+        cont = 1;
+    if (display.textContent == "") {
+        display.textContent = (memory.textContent).slice(0, -1);
+        memory.textContent = "";
+        temp = parseFloat(display.textContent);
+        operator = "";
+    } else if (memory.textContent !== "") {
+        operator = (memory.textContent).slice(-1);
+        num1 = parseFloat((memory.textContent).slice(0, -1));
+        num2 = parseFloat(display.textContent);
+        temp = operate(num1, num2, operator);
+        display.textContent = temp;
 
+        memory.textContent = "";
+    }
+    
     }
   
 })
