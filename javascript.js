@@ -98,7 +98,7 @@ const equal = document.getElementById("dgequal").addEventListener("click", funct
     }
 })
 //button clear implemented
-const clear = document.getElementById("dgclear").addEventListener("click", function () {
+const clear = document.getElementById("cleaning").addEventListener("click", function () {
     operator = "";
     temp = 0;
     num1 = 0;
@@ -129,4 +129,4 @@ const dot = document.getElementById("dgdot").addEventListener("click", function 
     }
 
 })
-
+//implement keyboard support
