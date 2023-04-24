@@ -73,6 +73,9 @@ const num = document.querySelectorAll(".number").forEach(function (e) {
         if (display.textContent == 0) {
             display.textContent = "";
         }
+        if((display.textContent).length==18){
+            e.preventDefault();
+        }
         display.textContent += e.textContent;
         temp = parseFloat(display.textContent);
     });
