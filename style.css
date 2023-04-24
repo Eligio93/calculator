@@ -24,6 +24,7 @@ body{
     border-radius: 10px;
     border:1px solid white;
     box-shadow: 0px 0px 20px #1C2331;
+    flex-grow: 0;
 }
 #display{
     color: white;
@@ -57,8 +58,8 @@ body{
 #calc{
     font-size: 48px;
     height:60px;
-   
-   text-align: end;
+    text-align: end;
+  
 }
 #memory{
     height:15px;
