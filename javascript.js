@@ -34,6 +34,9 @@ function operate(num1, num2, operator) {
 }
 
 
+
+
+
 const operation = document.querySelectorAll(".operator").forEach(function (e) {
     e.addEventListener("click", function () {
         //this statement check if is the first operation or not and in case
@@ -133,3 +136,51 @@ const dot = document.getElementById("dgdot").addEventListener("click", function 
 
 })
 //implement keyboard support
+const numKey=document.addEventListener("keydown", function(e){
+    console.log(e.key);
+    if((e.keyCode)>= 48 && (e.keyCode)<=57 || (e.keyCode)>= 96 && (e.keyCode)<=105){
+        if (cont == 1) {
+            cont = 0;
+            display.textContent = "";
+        }
+
+
+        if (display.textContent == 0) {
+            display.textContent = "";
+        }
+      
+        display.textContent += e.key;
+        if((display.textContent).length==18){
+            e.preventDefault();
+        }
+        temp = parseFloat(display.textContent);
+        //Backspace keyboard implementation
+    }else if((e.key)=="Backspace"){ 
+        if ((display.textContent).length == 1) {
+            display.textContent = 0;
+            temp = parseFloat(display.textContent);
+        } else {
+            display.textContent = (display.textContent).slice(0, -1);
+            temp = parseFloat(display.textContent);
+        }
+        //Operator Keyboard Implementation
+    }else if(e.key=="+"|| e.key=="-"||e.key=="/"||e.key=="*"){
+        if (display.textContent !== "" && memory.textContent !== "") {
+            num1 = parseFloat((memory.textContent).slice(0, -1));
+            num2 = parseFloat((display.textContent));
+            temp = operate(num1, num2, operator);
+            operator = e.key;
+            memory.textContent = temp + operator;
+            display.textContent = "";
+        } else if (display.textContent !== "" && memory.textContent == "") {
+            display.textContent = "";
+            operator = e.key;
+            memory.textContent = temp + operator;
+        } else if (display.textContent == "" && memory.textContent !== "") {
+            operator = e.key;
+            memory.textContent = temp + operator;
+        }
+
+    }
+  
+})
